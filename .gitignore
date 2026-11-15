@@ -1,0 +1,8 @@
+oauth-config.js
+client_secret*.json
+.env
+.env.*
+!.env.example
+*.zip
+*.xpi
+node_modules/

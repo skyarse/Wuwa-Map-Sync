@@ -1,0 +1,72 @@
+{
+  "manifest_version": 3,
+  "name": "WuWa Map Progress",
+  "description": "Локальная копия, экспорт, импорт и двусторонняя синхронизация отметок карты wuwabuild.com с Google Drive.",
+  "version": "1.1.1",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "wuwa-map-progress@wuwabuild.local",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ],
+        "optional": [
+          "websiteActivity",
+          "authenticationInfo"
+        ]
+      }
+    }
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "identity",
+    "alarms",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "https://www.wuwabuild.com/*",
+    "https://wuwabuild.com/*",
+    "https://www.googleapis.com/*",
+    "https://oauth2.googleapis.com/*"
+  ],
+  "action": {
+    "default_title": "Прогресс карты WuWa",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.wuwabuild.com/*",
+        "https://wuwabuild.com/*"
+      ],
+      "js": [
+        "lib.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "scripts": [
+      "lib.js",
+      "sync.js",
+      "oauth-config.js",
+      "google-drive.js",
+      "background.js"
+    ],
+    "persistent": false
+  }
+}
